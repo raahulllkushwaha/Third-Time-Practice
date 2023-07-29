@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Search engine</h3>
+    <script>
+        // Get the search form and input element
+        var searchForm = document.getElementById("search-form");
+        var searchInput = document.getElementById("search-input");
+
+        // Add an event listener to the form to listen for submit events
+        searchForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // prevent the form from submitting
+
+            // Get the search query from the input
+            var searchQuery = searchInput.value;
+
+            // Make an API call to retrieve the search results
+            fetch("https://your-api-endpoint.com?q=" + searchQuery)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    // Display the search results on the page
+                    displayResults(data);
+                });
+        });
+
+        // A function to display the search results on the page
+        function displayResults(data) {
+            // Get the element where the results will be displayed
+            var resultsContainer = document.getElementById("results");
+
+            // Clear the container
+            resultsContainer.innerHTML = "";
+
+            // Iterate through the results and create HTML elements to display them
+            data.forEach(function (result) {
+                var resultElement = document.createElement("div");
+                resultElement.innerHTML = result.title;
+                resultsContainer.appendChild(resultElement);
+            });
+        }
+
+    </script>
+</body>
+
+</html>

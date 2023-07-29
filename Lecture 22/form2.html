@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome Page</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: sans-serif;
+	background: #34495e;
+}
+
+.welcome-box {
+	width: 280px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #fff;
+	text-align: center;
+}
+
+.welcome-box h2 {
+	margin-top: 30px;
+	font-size: 24px;
+}
+
+
+    </style>
+</head>
+<body>
+	<div class="welcome-box">
+		<h2 id="greeting"></h2>
+	</div>
+	<script>
+        var name = localStorage.getItem("name");
+if (name !== null) {
+  document.getElementById("greeting").innerHTML = "Welcome..!! " + name;
+} else {
+  window.location.href = "form.html";
+}
+
+    </script>
+</body>
+</html>
